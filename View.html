@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="js/dist/aos.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
+
 <style type="text/css">
 body {
   font-family: "Droid Sans";
@@ -30,15 +31,11 @@ body {
 	</div>
 </div>
 
-<div class="loadAdd" id="oAdd">
-		<img id="open" style="width:100%;height:100vh">
-</div>
-
 <div class="loadLoader" id="loader">
-    <div class="innerLoader">
-      <img src="images/loader.gif" width="50%"><br><br>
-      Loading ....
-    </div>
+		<div class="innerLoader">
+			<img src="images/loader.gif" width="50%"><br><br>
+			Loading ....
+		</div>
 </div>
 
 <div class="container-fluid">
@@ -52,12 +49,13 @@ body {
 </div>
 <div class="col-8" style="background-color: #E11C62;padding:3px;color:#fff">
     <div style="padding:5px;text-align: center;font-size: 19px;margin-top: 5px;">
-      <a href="index.html" style="color:#fff">SPETINFO</a>
+<a href="index.html" style="color:#fff">SPETINFO</a>
     </div>
 </div>
 <div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
     <div style="padding:5px;margin-right:10px;" class="pull-right">
     	<!-- <i class="fa fa-user fa-2x"></i> -->
+    	<span onclick="window.history.back();"><i class="fa fa-chevron-left fa-2x"></i></span>
     </div>
 </div>
     </div>
@@ -81,7 +79,72 @@ body {
 	</div>
 </div>
 
-<div id="my-example"></div>
+<table class="table" style="margin-bottom: 0px;">
+	<tr><td style="background-color: #8FE0DB;text-align: center;font-size: 20px;font-weight: bold;">
+		<span id="bname"></span>
+	</td></tr>
+</table>
+<table class="table" style="margin-bottom: 0px;">
+	<tr>
+		<td style="width:40%;padding:3px">
+			<img id="image" width="100%"/>
+		</td>
+		<td style="background-color: #DAB1E0;font-size: 14px;font-weight: bold;">
+			Name<br>
+			<span id="name"></span><br><br>
+			Phone<br>
+			<span id="phone"></span>
+		</td>
+	</tr>
+</table>
+
+<table class="table" style="margin-bottom: 0px;">
+	<tr>
+<td style="background-color: #8FE0DB;text-align: center;">
+	<span id="address">Address</span>
+</td>
+	</tr>
+</table>
+
+<table class="table" style="margin-bottom: 0px;">
+	<tr>
+<td style="background-color: #8FE0DB;text-align: center;">
+	<span>Working Days</span>
+<table class="table">
+	<tr>
+		<td>S<br><span id="s"></span></td>
+		<td>M<br><span id="m"></span></td>
+		<td>T<br><span id="tu"></span></td>
+		<td>W<br><span id="w"></span></td>
+		<td>T<br><span id="th"></span></td>
+		<td>F<br><span id="f"></span></td>
+		<td>S<br><span id="sa"></span></td>
+	</tr>
+</table>
+</td>
+	</tr>
+</table>
+
+<table class="table" style="margin-bottom: 0px;">
+	<tr>
+<td style="background-color: #8FE0DB;text-align: center;">
+	<span>Working Hours</span><br>
+	<span><i class="fa fa-clock-o"></i> <span id="ftime"></span> - <i class="fa fa-clock-o"></i> <span id="ttime"></span></span>
+</td>
+	</tr>
+</table>
+
+<table class="table" style="margin-bottom: 0px;">
+	<tr>
+<td style="background-color: #8FE0DB;text-align: center;">
+	<span>Location</span><br>
+<div id="map" style="width:100%;height:400px;border:4px solid #fff">
+</td>
+	</tr>
+</table>
+  
+</div>
+	
 
 </div>
 
@@ -95,37 +158,39 @@ body {
 <script src="bootstrap/js/bootstrap.js"></script>
 <script src="js/dist/aos.js"></script>
 <script src="js/custom.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0WTjQy5o77JCfRCuT0XiR9Jew-nMhIKA"></script>
 <script>
     $(function(){
 AOS.init();
-$("#open").attr('src',server+'open/1.png');
-setTimeout(function(){ 
-$("#oAdd").hide();
-}, 3000);
-
 //Get Categories
 $.ajax({
-          url:server+"app_GetCategories.php",
+          url:server+"app_GetView.php",
+          data:{"infoid":localStorage.getItem("Infoid")},
+          type:"post",
           beforeSend: function(){
            $("#loader").show();
           },
           success:function(data){
             $("#loader").hide();
             console.log(data);
-                  var toAppend = '<div class="row" data-aos="fade-up">';
-                  var j;
-                     $.each(data,function(i,o){
-                     	j=i+1;
-                      if(o.Type == 'Item'){
-toAppend += '<div class="col-6"><div class="tile tile-medium '+o.Color+'"><a onclick="showSubCategory(\''+o.Category+'\');"><div class="row align-items-end theader"><div class="col"><span class="clfff"><i class="'+o.icon+'"></i></span></div></div><div class="row align-items-center tftitle"><div class="col"><span class="clfff">'+o.Category+'</span></div></div></a></div></div>';
-                      }else{
-toAppend += '<div class="col-12"><div style="padding:5px;"><img src="'+server+'adds/'+o.Category+'" style="width:100%"/></div></div>';
-                      }
-                        j++;
-                    });
-                     toAppend += '</div>';
-                   $('#my-example').append(toAppend);
-          }
+            $("#bname").html(data.BusinessName);
+            $("#image").attr('src',server+data.Image);
+            $("#name").html(data.Owner);
+            $("#phone").html(data.Phone);
+            $("#address").html(data.Address);
+            $("#s").html(data.Sunday);
+            $("#m").html(data.Monday);
+            $("#tu").html(data.Tuesday);
+            $("#w").html(data.Wednesday);
+            $("#th").html(data.Thursday);
+            $("#f").html(data.Friday);
+            $("#sa").html(data.Saturday);
+            $("#ftime").html(data.FromTime);
+            $("#ttime").html(data.ToTime);
+            if(data.Latitude != '' && data.Longitude != ''){
+            	showMap(data.Latitude,data.Longitude);
+            }
+        	}
           });
 
 //Get Categories Close
@@ -134,6 +199,16 @@ function showBar(){
   $(".box").animate({
                 width: "toggle"
             });
+}
+function showMap(lat,lng){
+	 var mapOptions = {
+        center: new google.maps.LatLng(lat, lng),
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+var marker = new google.maps.Marker({position:new google.maps.LatLng(lat, lng)});
+  marker.setMap(map);
 }
 </script>
 </body>
