@@ -7,7 +7,7 @@
     <author email="sanarajasekhar@gmail.com" href="http://spetinfo.com">
         Spet Info Enterprises
     </author>
-    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreen" value="splash" />
     <preference name="Orientation" value="portrait" />
     <preference name="SplashScreenDelay" value="5000" />
     <splash src="resources/splash.png" />
