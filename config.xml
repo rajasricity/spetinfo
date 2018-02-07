@@ -15,8 +15,6 @@
     </platform>
     <splash src="resources/splash.png" />
     <platform name="android">
-    <!-- you can use any density that exists in the Android project -->
-
     <splash src="resources/hdpip.png" density="port-hdpi"/>
     <splash src="resources/ldpip.png" density="port-ldpi"/>
     <splash src="resources/mdpip.png" density="port-mdpi"/>
