@@ -112,14 +112,14 @@ $.ajax({
           success:function(data){
             $("#loader").hide();
             console.log(data);
-                  var toAppend = '<div class="row">';
+                  var toAppend = '<div class="row no-gutter">';
                   var j;
                      $.each(data,function(i,o){
                      	j=i+1;
                       if(o.Type == 'Item'){
-toAppend += '<div class="col-6" data-aos="fade-up"><div class="tile tile-medium '+o.Color+'"><a onclick="showSubCategory(\''+o.Category+'\');"><div class="row align-items-end theader"><div class="col"><span class="clfff"><i class="'+o.icon+'"></i></span></div></div><div class="row align-items-center tftitle"><div class="col"><span class="clfff">'+o.Category+'</span></div></div></a></div></div>';
+toAppend += '<div class="col-6"><div class="tile tile-medium '+o.Color+'" style=""><a onclick="showSubCategory(\''+o.Category+'\');"><div class="row align-items-end theader"><div class="col"><span class="clfff"><i class="'+o.icon+'"></i></span></div></div><div class="row align-items-center tftitle"><div class="col"><span class="clfff">'+o.Category+'</span></div></div></a></div></div>';
                       }else{
-toAppend += '<div class="col-12" data-aos="fade-up"><div style="padding:5px;"><img src="'+server+'adds/'+o.Category+'" style="width:100%"/></div></div>';
+toAppend += '<div class="col-12"><div style=""><img src="'+server+'adds/'+o.Category+'" style="width:100%"/></div></div>';
                       }
                         j++;
                     });
