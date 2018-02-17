@@ -65,3 +65,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd4eb', end
 .myUl{
     list-style: none;padding-left: 10px;line-height: 40px;
 }   
+
+.search { position: relative; }
+.search input { text-indent: 30px;}
+.search .fa-search { 
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 20px;
+}
