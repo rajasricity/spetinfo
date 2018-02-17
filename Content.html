@@ -75,16 +75,33 @@ body {
 
 <div class="row" data-aos="fade-up">
 	<div class="col">
-<input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px" onkeyup="searchString(this.value);">
+<div class="search">
+  <span class="fa fa-search"></span>
+  <input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px" onkeyup="searchString(this.value);">
+</div>
 	</div>
 </div>
 
-<div id="my-example"></div>
-
-<div id="accordion" role="tablist" aria-multiselectable="true">
-  
-  
+<div id="my-example">
+<!-- <a href="#">
+<div class="row" style="background-color: #e1e1e1">
+  <div class="col-3">
+    <img src="" width="100%" height="100%"/>
+  </div>
+  <div class="col-9">
+    <span style="font-size: 24px;margin-left: 13px;color:#000">Business Name</span><br>
+    <span style="font-size: 16px;margin-left: 13px;color:#000">Address</span><br>
+    <span style="font-size: 16px;margin-left: 13px;color:#000">Phone</span>
+  </div>
 </div>
+</a> -->
+
+</div>
+
+<!-- <div id="accordion" role="tablist" aria-multiselectable="true">
+  
+  
+</div> -->
 	
 
 </div>
@@ -103,6 +120,7 @@ body {
     $(function(){
 AOS.init();
 //Get Categories
+
 $.ajax({
           url:server+"app_GetData.php",
           data:{"Category":localStorage.getItem("Category"),"SubCategory":localStorage.getItem("SubCategory")},
@@ -115,12 +133,31 @@ $.ajax({
             console.log(data);
             var toAppend='',n;
                      $.each(data,function(i,o){
-                     	if(i==0){ n="show"; }else{n="";}
-toAppend += '<div class="card"><div class="card-header" role="tab" id="'+o.Infoid+'"><h5 class="mb-0"><a data-toggle="collapse" data-parent="#accordion" href="#'+o.Infoid+i+'" aria-expanded="true" aria-controls="collapseOne" style="color:red;text-decoration: none">'+o.BusinessName+'</a></h5></div><div id="'+o.Infoid+i+'" class="collapse '+n+'" role="tabpanel" aria-labelledby="'+o.Infoid+'"><div class="card-block" style="padding:10px;"><table class="table table-bordered"><tr><td align="center">'+o.Address+'</td></tr><tr><td>'+o.Description+'</td></tr><tr><td><img src="'+server+o.Image+'" width="100%"/></td></tr><tr><td align="center"><a onclick="showData('+o.Infoid+');" class="mbutton">SHOW MORE</a></td></tr></table></div></div></div>';
+                      if(i==0){ n="show"; }else{n="";}
+toAppend += '<a onclick="showData('+o.Infoid+');"><div class="row" style="background-color: #e1e1e1;border-bottom:2px solid gray"><div class="col-3"><img src="'+server+o.Image+'" width="100%" height="100%"/></div><div class="col-9"><span style="font-size: 20px;margin-left: 13px;color:#000">'+o.BusinessName+'</span><br><span style="font-size: 16px;margin-left: 12px;color:#000">'+o.Address+'</span><br><span style="font-size: 16px;margin-left: 12px;color:#000"><i class="fa fa-phone"></i> : '+o.Phone+'</span></div></div></a>';
                     });
-                   $('#accordion').append(toAppend);
+                   $('#my-example').append(toAppend);
           }
           });
+
+// $.ajax({
+//           url:server+"app_GetData.php",
+//           data:{"Category":localStorage.getItem("Category"),"SubCategory":localStorage.getItem("SubCategory")},
+//           type:"post",
+//           beforeSend: function(){
+//            $("#loader").show();
+//           },
+//           success:function(data){
+//             $("#loader").hide();
+//             console.log(data);
+//             var toAppend='',n;
+//                      $.each(data,function(i,o){
+//                      	if(i==0){ n="show"; }else{n="";}
+// toAppend += '<div class="card"><div class="card-header" role="tab" id="'+o.Infoid+'"><h5 class="mb-0"><a data-toggle="collapse" data-parent="#accordion" href="#'+o.Infoid+i+'" aria-expanded="true" aria-controls="collapseOne" style="color:red;text-decoration: none">'+o.BusinessName+'</a></h5></div><div id="'+o.Infoid+i+'" class="collapse '+n+'" role="tabpanel" aria-labelledby="'+o.Infoid+'"><div class="card-block" style="padding:10px;"><table class="table table-bordered"><tr><td align="center">'+o.Address+'</td></tr><tr><td>'+o.Description+'</td></tr><tr><td><img src="'+server+o.Image+'" width="100%"/></td></tr><tr><td align="center"><a onclick="showData('+o.Infoid+');" class="mbutton">SHOW MORE</a></td></tr></table></div></div></div>';
+//                     });
+//                    $('#accordion').append(toAppend);
+//           }
+//           });
 
 //Get Categories Close
     });
