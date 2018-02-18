@@ -134,7 +134,7 @@ $.ajax({
             var toAppend='',n;
                      $.each(data,function(i,o){
                       if(i==0){ n="show"; }else{n="";}
-toAppend += '<a onclick="showData('+o.Infoid+');"><div class="row" style="background-color: #e1e1e1;border-bottom:2px solid gray"><div class="col-3"><img src="'+server+o.Image+'" width="100%" height="100%"/></div><div class="col-9"><span style="font-size: 20px;margin-left: 13px;color:#000">'+o.BusinessName+'</span><br><span style="font-size: 16px;margin-left: 12px;color:#000">'+o.Address+'</span><br><span style="font-size: 16px;margin-left: 12px;color:#000"><i class="fa fa-phone"></i> : '+o.Phone+'</span></div></div></a>';
+toAppend += '<a onclick="showData('+o.Infoid+');"><div class="row" data-aos="fade-up" style="background-color: #e1e1e1;border-bottom:2px solid gray;"><div class="col-3"><img src="'+server+o.Image+'" width="100%" height="100%"/></div><div class="col-9"><span style="font-size: 20px;padding: 10px;color:#000">'+o.BusinessName+'</span><p style="font-size: 16px;padding-left:10px;color:#000;">'+o.Address+'</p><span style="font-size: 16px;margin-left: 12px;color:#000"><i class="fa fa-phone"></i> : '+o.Phone+'</span></div></div></a>';
                     });
                    $('#my-example').append(toAppend);
           }
