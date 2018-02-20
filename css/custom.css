@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .loadLoader{
 	width:100%;
 	height: 100vh;
@@ -73,4 +74,81 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd4eb', end
   top: 15px;
   left: 10px;
   font-size: 20px;
+=======
+.loadLoader{
+	width:100%;
+	height: 100vh;
+	background-color: #fff;
+	text-align: center;
+	position: absolute;
+	z-index: 9999;
+	display: none;
+}
+.innerLoader{
+	position: relative;
+	z-index: 9999;
+	top:35%;
+}
+.mybg{
+	background: rgba(255,212,235,1);
+background: -moz-linear-gradient(left, rgba(255,212,235,1) 0%, rgba(199,117,161,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,212,235,1)), color-stop(100%, rgba(199,117,161,1)));
+background: -webkit-linear-gradient(left, rgba(255,212,235,1) 0%, rgba(199,117,161,1) 100%);
+background: -o-linear-gradient(left, rgba(255,212,235,1) 0%, rgba(199,117,161,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,212,235,1) 0%, rgba(199,117,161,1) 100%);
+background: linear-gradient(to right, rgba(255,212,235,1) 0%, rgba(199,117,161,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd4eb', endColorstr='#c775a1', GradientType=1 );
+}
+
+.mbutton {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 12px;
+    border: 1px solid #a12727;
+    border-radius: 0px;
+    background: #f22e6f;
+    color: #fff !important;
+    text-decoration: none;
+}
+.mbutton:hover,
+.mbutton:focus {
+    background: #ff3785;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff3785), to(#b62f2f));
+    background: -moz-linear-gradient(top, #ff3785, #b62f2f);
+    background: linear-gradient(to bottom, #ff3785, #b62f2f);
+    color: #ffffff;
+    text-decoration: none;
+}
+.mbutton:active {
+    background: #911c43;
+    background: -webkit-gradient(linear, left top, left bottom, from(#911c43), to(#982727));
+    background: -moz-linear-gradient(top, #911c43, #982727);
+    background: linear-gradient(to bottom, #911c43, #982727);
+}
+
+.loadAdd{
+    width:100%;
+    height: 100vh;
+    background-color: #fff;
+    text-align: center;
+    position: fixed;
+    z-index: 9999;
+}
+.searchBox{
+    position: absolute;z-index: 9999;background-color: #fff;width: 100%;top: 53px;
+    display: none;max-height: 300px;overflow-y: scroll;
+}
+.myUl{
+    list-style: none;padding-left: 10px;line-height: 40px;
+}   
+
+.search { position: relative; }
+.search input { text-indent: 30px;}
+.search .fa-search { 
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 20px;
+>>>>>>> origin/master
 }

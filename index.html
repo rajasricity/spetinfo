@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -143,4 +144,151 @@ function showBar(){
 </script>
 </body>
 
+=======
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Spetinfo</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="js/dist/aos.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<style type="text/css">
+body {
+  font-family: "Droid Sans";
+}
+</style>
+</head>
+
+<body>
+<div class="loadLoader mybg" id="con">
+	<div class="innerLoader">
+		<img src="images/nointernet.png" width="25%">
+	<br><br>
+	No Internet Connection
+	<br><br>
+	<button class="btn btn-success" onclick="window.location.reload();">RETRY</button>
+	</div>
+</div>
+
+<div class="loadAdd" id="oAdd">
+		<img id="open" style="width:100%;height:100vh">
+</div>
+
+<div class="loadLoader" id="loader">
+    <div class="innerLoader">
+      <img src="images/loader.gif" width="50%"><br><br>
+      Loading ....
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div style="width:100%;position: fixed;z-index:999;">
+
+    <div class="row" data-aos="fade">
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+   <div style="padding:5px;margin-left:10px;" onclick="showBar();">
+   	<i class="fa fa-bars fa-2x"></i>
+   </div>
+</div>
+<div class="col-8" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;text-align: center;font-size: 19px;margin-top: 5px;">
+      <a href="index.html" style="color:#fff;text-decoration: none;">SPETINFO</a>
+    </div>
+</div>
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;margin-right:10px;" class="pull-right">
+    	<!-- <i class="fa fa-user fa-2x"></i> -->
+    </div>
+</div>
+    </div>
+<div style="position:fixed;width:50%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;display:none" class="box">
+<div class="box-inner">
+<a href="index.html" style="color:#fff;font-size: 16px;text-decoration: none;"><i class="fa fa-home"></i> &nbsp; Home</a><br>
+<a href="index.html" style="color:#fff;font-size: 16px;text-decoration: none;"><i class="fa fa-arrow-left"></i> &nbsp;&nbsp;Login</a>
+</div>
+</div>
+    </div>
+
+<div style="top:50px;position: relative">
+
+<div class="searchBox" id="searchBox">
+  <ul class="myUl" id="mysearch"></ul>
+</div>
+
+<div class="row" data-aos="fade-up">
+	<div class="col">
+
+<div class="search">
+  <span class="fa fa-search"></span>
+  <input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px" onkeyup="searchString(this.value);">
+</div>
+
+	</div>
+</div>
+
+<div id="my-example"></div>
+
+</div>
+
+
+
+</div>
+<!-- page content goes here -->
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="js/dist/aos.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    $(function(){
+AOS.init();
+$("#open").attr('src',server+'open/1.png');
+setTimeout(function(){ 
+$("#oAdd").hide();
+}, 3000);
+
+//Get Categories
+$.ajax({  
+          url:server+"app_GetCategories.php",
+          beforeSend: function(){
+           $("#loader").show();
+          },
+          success:function(data){
+            $("#loader").hide();
+            console.log(data);
+                  var toAppend = '<div class="row no-gutter">';
+                  var j;
+                     $.each(data,function(i,o){
+                     	j=i+1;
+                      if(o.Type == 'Item'){
+toAppend += '<div class="col-6"><div class="tile tile-medium '+o.Color+'" style=""><a onclick="showSubCategory(\''+o.Category+'\');"><div class="row align-items-end theader"><div class="col"><span class="clfff"><i class="'+o.icon+'"></i></span></div></div><div class="row align-items-center tftitle"><div class="col"><span class="clfff">'+o.Category+'</span></div></div></a></div></div>';
+                      }else{
+toAppend += '<div class="col-12"><div style=""><img src="'+server+'adds/'+o.Category+'" style="width:100%"/></div></div>';
+                      }
+                        j++;
+                    });
+                     toAppend += '</div>';
+                   $('#my-example').append(toAppend);
+          }
+          });
+
+//Get Categories Close
+    });
+function showBar(){
+  $(".box").animate({
+                width: "toggle"
+            });
+}
+</script>
+</body>
+
+>>>>>>> origin/master
 </html>
