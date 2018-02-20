@@ -622,7 +622,7 @@ pre code {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  min-height: 1px;
+  min-height: 0px;
   padding-right: 0px;
   padding-left: 0px;
 }
@@ -9017,7 +9017,7 @@ a.thumbnail.active {
   opacity: 0.75;
   background-color: #2e8bcc;
   z-index: 1;
-  border: 4px #ffffff solid;
+  border: 0px #ffffff solid;
   color: #ffffff;
 }
 .tile h1,
@@ -9245,3 +9245,8 @@ a.fa-links:focus {
         border: 0px solid #a29415;
         line-height: 40px;
     }
+
+.my-div{
+ padding-left:0;
+padding-right:0;
+}
