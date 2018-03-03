@@ -1,6 +1,6 @@
 var server;
-//server = "http://localhost/spetinfo/";
-server = "http://spetinfo.com/spetinfo/";
+server = "http://localhost/spetinfo/";
+//server = "http://spetinfo.com/spetinfo/";
 $(function(){
 connect();
 });
