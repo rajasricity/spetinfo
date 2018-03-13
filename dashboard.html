@@ -21,9 +21,11 @@ body {
 </head>
 
 <body>
-        <div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
-                <div class="box-inner" id="lbarinner"></div>
-            </div>
+
+<div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+    <div class="box-inner" id="lbarinner"></div>
+</div>
+
 <div class="loadLoader mybg" id="con">
 	<div class="innerLoader">
 		<img src="images/nointernet.png" width="25%">
@@ -62,7 +64,6 @@ body {
     </div>
 </div>
     </div>
-
     </div>
 
 <div style="top:50px;position: relative">
@@ -108,8 +109,8 @@ AOS.init();
 //Get Categories
 
 $.ajax({
-          url:server+"app_GetData.php",
-          data:{"Category":localStorage.getItem("Category"),"SubCategory":localStorage.getItem("SubCategory")},
+          url:server+"app_GetMyData.php",
+          data:{"Phone":localStorage.getItem("Phone")},
           type:"post",
           beforeSend: function(){
            $("#loader").show();

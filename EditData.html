@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Spetinfo</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="js/dist/aos.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="datetime/css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+body {
+  font-family: "Droid Sans";
+}
+</style>
+</head>
+
+<body>
+
+    <div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+        <div class="box-inner" id="lbarinner"></div>
+    </div>
+
+    <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;">
+      <div class="row">
+        <div class="col-4">
+          <a href="" class="mbutton" style="width: 100%">ADD</a>
+        </div>
+        <div class="col-4">
+            <a href="EditData.html" class="mbutton" style="width: 100%">EDIT</a>
+          </div>
+          <div class="col-4">
+              <a href="" class="mbutton" style="width: 100%">OFFERS</a>
+            </div>
+      </div>
+    </div>
+
+
+<div class="loadLoader mybg" id="con">
+	<div class="innerLoader">
+		<img src="images/nointernet.png" width="25%">
+	<br><br>
+	No Internet Connection
+	<br><br>
+	<button class="btn btn-success" onclick="window.location.reload();">RETRY</button>
+	</div>
+</div>
+
+<div class="loadLoader" id="loader">
+		<div class="innerLoader">
+			<img src="images/loader.gif" width="50%"><br><br>
+			Loading ....
+		</div>
+</div>
+
+<div class="container-fluid">
+    <div style="width:100%;position: fixed;z-index:999;top:0px;">
+
+    <div class="row" data-aos="fade">
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+   <div style="padding:5px;margin-left:10px;" onclick="showBar();">
+   	<i class="fa fa-bars fa-2x"></i>
+   </div>
+</div>
+<div class="col-8" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;text-align: center;font-size: 19px;margin-top: 5px;">
+<a href="index.html" style="color:#fff;text-decoration: none;">SPETINFO</a>
+    </div>
+</div>
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;margin-right:10px;" class="pull-right">
+    	<!-- <i class="fa fa-user fa-2x"></i> -->
+    	<span onclick="window.history.back();"><i class="fa fa-chevron-left fa-2x"></i></span>
+    </div>
+</div>
+    </div>
+    </div>
+
+<div style="top:50px;position: relative;margin-bottom:50px;">
+
+<!-- Content Data -->
+
+<div style="padding:10px;text-align:center;margin-top:0px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="updateData" enctype="multipart/form-data">
+
+                <input type="text" name="category" id="search-box" class="form-control" placeholder="Category" required="required" readonly="readonly" tabindex="1"/>
+                <div id="country-list" style="width:90%;background-color: #E6E6E6;padding:5px;text-align: left;display:none">
+                </div>
+                <br>
+                <input type="text" name="subcategory" id="search-box1" class="form-control" placeholder="Sub Category" required="required" readonly="readonly" tabindex="2"/>
+                <div id="country-list1" style="width:90%;background-color: #E6E6E6;padding:5px;text-align: left;display:none"></div>
+                <br>
+                <input type="text" name="bname" id="bname" class="form-control" placeholder="Business Name" required="required" tabindex="3"/><br>
+                <input type="text" name="owner" id="owner" class="form-control" placeholder="Owner" tabindex="4"/><br>
+                <input type="number" min="0" name="phone" id="phone" class="form-control" readonly="readonly" placeholder="Phone" tabindex="5"/><br>
+                <input type="number" min="0" name="aphone" id="aphone" class="form-control" placeholder="Alternate Phone" tabindex="6"/><br>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email" tabindex="7"/><br>
+                <textarea name="address" id="address" class="form-control" rows="3" placeholder="Address" tabindex="8"></textarea><br>
+                <textarea name="description" id="description" class="form-control" rows="3" placeholder="Description" tabindex="9"></textarea><br>
+                <p style="text-align: left">SELECT WORKING DAYS</p>
+                <table class="table" >
+                    <tr><td>Su<label class="control control--checkbox"><input type="checkbox" checked="checked" name="sunday"/><div class="control__indicator"></div>
+                </label></td>
+                        <td>
+                Mo
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="monday" id="monday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                
+                        <td>
+                Tu
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="tuesday" id="tuesday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                
+                        <td>
+                We
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="wednesday" id="wednesday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                
+                        <td>
+                Th
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="thursday" id="thursday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                
+                        <td>
+                Fr
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="friday" id="friday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                
+                        <td>
+                Sa
+                <label class="control control--checkbox">
+                        <input type="checkbox" checked="checked" name="saturday" id="saturday"/>
+                        <div class="control__indicator"></div>
+                </label>
+                        </td>
+                    </tr>
+                </table>
+                
+                <table class="table">
+                    <tr>
+                        <td align="right">
+                <div id="datetimepicker3" class="input-append">
+                FROM TIME
+    <input data-format="hh:mm:ss" name="ftime" type="text" tabindex="10" id="ftime"></input>
+                    <span class="add-on">
+                      <i class="fa fa-clock-o" data-date-icon="icon-calendar"></i>
+                    </span>
+                  </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td align="right">
+                <div id="datetimepicker4" class="input-append">
+                TO TIME
+                    <input data-format="hh:mm:ss" name="ttime" type="text" tabindex="11" id="ttime"></input>
+                    <span class="add-on">
+                      <i class="fa fa-clock-o" data-date-icon="icon-calendar"></i>
+                    </span>
+                  </div>
+                        </td>
+                    </tr>
+                </table>
+                <textarea name="description" rows="4" class="form-control" id="description" placeholder="Add Description" tabindex="12"></textarea>
+                <input type="hidden" name="infoid" id="infoid"/>
+                <br>
+                <button type="submit" class="btn btn-primary pull-right" tabindex="13">SUBMIT</button>
+                </form>
+        </div>
+    </div>
+</div>
+<!-- Content Data Close -->  
+</div>
+	
+
+</div>
+
+
+<!-- page content goes here -->
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="datetime/js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/dist/aos.js"></script>
+<script src="js/custom.js"></script>
+
+<script>
+    $(function(){
+AOS.init();
+$("#demo").load(server+"app_GetImages.php?infoid="+localStorage.getItem("Infoid"));
+//Get Categories
+//console.log(localStorage.getItem("Infoid"));
+//alert(localStorage.getItem("Infoid"));
+$("#infoid").val(localStorage.getItem("Infoid"));
+    $.ajax({
+      url:server+"loadInformation",
+      data:{"infoid":localStorage.getItem("Infoid")},
+      type:"post",
+      success: function(str){
+        $("#search-box").val(str.Category);
+        $("#search-box1").val(str.SubCategory);
+        $("#bname").val(str.Name);
+        $("#owner").val(str.Owner);
+        $("#phone").val(str.Phone);
+        $("#aphone").val(str.Aphone);
+        $("#email").val(str.Email);
+        $("#address").val(str.Address);
+        $("#ftime").val(str.FromTime);
+        $("#ttime").val(str.ToTime);
+        $("#description").val(str.Description);
+        $("#longitude").val(str.Longitude);
+        $("#latitude").val(str.Latitude);
+        if(str.Sunday != ''){ 
+          $('input:checkbox[name=sunday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=sunday]').attr('checked',false);
+        }
+
+        if(str.Monday != ''){ 
+          $('input:checkbox[name=monday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=monday]').attr('checked',false);
+        }
+
+        if(str.Tuesday != ''){ 
+          $('input:checkbox[name=tuesday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=tuesday]').attr('checked',false);
+        }
+
+        if(str.Wednesday != ''){ 
+          $('input:checkbox[name=wednesday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=wednesday]').attr('checked',false);
+        }
+
+        if(str.Thursday != ''){ 
+          $('input:checkbox[name=thursday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=thursday]').attr('checked',false);
+        }
+
+        if(str.Friday != ''){ 
+          $('input:checkbox[name=friday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=friday]').attr('checked',false);
+        }
+
+        if(str.Saturday != ''){ 
+          $('input:checkbox[name=saturday]').attr('checked',true);
+        }else{
+          $('input:checkbox[name=saturday]').attr('checked',false);
+        }
+        
+      }
+    });
+
+    $('#datetimepicker3').datetimepicker({
+      language: 'en',
+      pickDate: false
+    });
+
+    $('#datetimepicker4').datetimepicker({
+      language: 'en',
+      pickDate: false
+    });
+
+//Get Info Close
+
+// Update Data
+$("#updateData").on('submit', function(e){
+          e.preventDefault();
+          var fdata = $("#updateData").serialize();
+          $.ajax({
+             url:server+"app_UpdateData.php",
+             data:fdata,
+             type:"post",
+             beforeSend:function(){
+             $("#preloader").show();
+             $("#emsg").hide();
+             $("#smsg").hide();
+             $("#cmsg").hide();
+                },
+             success: function(str){
+               $("#preloader").hide();
+               $("#cmsg").hide();
+               $("#emsg").hide();
+               if(str.Status == 'Success'){
+                $("#smsg").hide();
+                alert("Successfully Submitted");
+                location.href="dashboard.html";
+               }else{
+                 $("#emsg").show();
+               }
+             },
+              error: function(jqXHR, status, error){
+               $("#preloader").hide();
+               $("#cmsg").show();
+                }
+          });
+       });
+
+// Update Data Close
+    });
+</script>
+</body>
+</html>

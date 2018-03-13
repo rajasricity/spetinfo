@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="js/dist/aos.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
-
 <style type="text/css">
 body {
   font-family: "Droid Sans";
@@ -21,9 +20,13 @@ body {
 </head>
 
 <body>
-        <div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
-                <div class="box-inner" id="lbarinner"></div>
-            </div>
+
+<div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+                <div class="box-inner" id="lbarinner">
+                        
+                </div>
+</div>
+
 <div class="loadLoader mybg" id="con">
 	<div class="innerLoader">
 		<img src="images/nointernet.png" width="25%">
@@ -35,13 +38,14 @@ body {
 </div>
 
 <div class="loadLoader" id="loader">
-		<div class="innerLoader">
-			<img src="images/loader.gif" width="50%"><br><br>
-			Loading ....
-		</div>
+    <div class="innerLoader">
+      <img src="images/loader.gif" width="50%"><br><br>
+      Loading ....
+    </div>
 </div>
 
 <div class="container-fluid">
+
     <div style="width:100%;position: fixed;z-index:999;">
 
     <div class="row" data-aos="fade">
@@ -52,43 +56,33 @@ body {
 </div>
 <div class="col-8" style="background-color: #E11C62;padding:3px;color:#fff">
     <div style="padding:5px;text-align: center;font-size: 19px;margin-top: 5px;">
-<a href="index.html" style="color:#fff;text-decoration: none;">SPETINFO</a>
+      <a href="index.html" style="color:#fff;text-decoration: none;">SPETINFO</a>
     </div>
 </div>
 <div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
     <div style="padding:5px;margin-right:10px;" class="pull-right">
     	<!-- <i class="fa fa-user fa-2x"></i> -->
-    	<span onclick="window.history.back();"><i class="fa fa-chevron-left fa-2x"></i></span>
     </div>
 </div>
     </div>
 
     </div>
 
-<div style="top:50px;position: relative">
-
-<div class="searchBox" id="searchBox">
-  <ul class="myUl" id="mysearch"></ul>
-</div>
+<div style="top:150px;position: relative;width:80%;margin:0px auto">
 
 <div class="row" data-aos="fade-up">
 	<div class="col">
-<div class="search">
-  <span class="fa fa-search"></span>
-  <input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px" onkeyup="searchString(this.value);">
-</div>
+<center><img src="resources/xxhdpi.png"/></center><br>
+<form id="validateregister">
+<input type="hidden" name="sno" id="sno"/>
+<input type="number" name="otp" class="form-control" required placeholder="ENTER OTP" style="border-radius:0px;height:50px;"/><br>
+<input type="submit" name="submit" class="mbutton" value="LOGIN" style="width:100%;height:50px;"/>
+</form>
+<div class="alert alert-danger" id="emsg" style="margin-top:10px;display:none"></div>
 	</div>
 </div>
 
-<div id="my-example">
 
-</div>
-
-<!-- <div id="accordion" role="tablist" aria-multiselectable="true">
-  
-  
-</div> -->
-	
 
 </div>
 
@@ -105,26 +99,7 @@ body {
 <script>
     $(function(){
 AOS.init();
-//Get Categories
-
-$.ajax({
-          url:server+"app_GetData.php",
-          data:{"Category":localStorage.getItem("Category"),"SubCategory":localStorage.getItem("SubCategory")},
-          type:"post",
-          beforeSend: function(){
-           $("#loader").show();
-          },
-          success:function(data){
-            $("#loader").hide();
-            console.log(data);
-            var toAppend='',n;
-                     $.each(data,function(i,o){
-                      if(i==0){ n="show"; }else{n="";}
-toAppend += '<a onclick="showData('+o.Infoid+');"><div class="row" data-aos="fade-up" style="background-color: #fff;border-bottom:2px solid gray;"><div class="col-3"><img src="'+server+o.Image+'" width="100%" height="100%"/></div><div class="col-9"><p style="font-size: 20px;padding: 10px;color:#000;padding-bottom:0px;margin-bottom:0px;">'+o.BusinessName+'</p><p style="font-size: 16px;padding-left:10px;color:#000;">'+o.Address+'</p><span style="font-size: 16px;margin-left: 12px;color:#000"><i class="fa fa-phone"></i> : '+o.Phone+'</span></div></div></a>';
-                    });
-                   $('#my-example').append(toAppend);
-          }
-          });
+$("#sno").val(localStorage.getItem("Sno"));
     });
 </script>
 </body>
