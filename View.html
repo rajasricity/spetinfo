@@ -26,16 +26,16 @@ body {
         <div class="box-inner" id="lbarinner"></div>
     </div>
 
-    <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;display: none" id="bottom">
+    <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;display: none;" id="bottom">
       <div class="row">
         <!-- <div class="col-4">
           <a href="" class="mbutton" style="width: 100%">ADD</a>
         </div> -->
           <div class="col-6">
-            <a href="EditData.html" class="mbutton" style="width: 100%">EDIT</a>
+            <a href="EditData.html" class="mbutton" style="width: 100%;padding-top:15px;padding-bottom:15px;">EDIT</a>
           </div>
           <div class="col-6">
-              <a href="#" class="mbutton" style="width: 100%">ADD OFFERS</a>
+              <a href="#" class="mbutton" style="width: 100%;padding-top:15px;padding-bottom:15px;">ADD OFFERS</a>
           </div>
       </div>
     </div>
@@ -114,13 +114,21 @@ body {
 
 <table class="table" style="margin-bottom: 0px;">
   <tr>
-    <td style="font-size: 14px;font-weight: bold;">
-      <span id="phone"></span>&nbsp;&nbsp;
-      <a class="external btn btn-primary" id="calling">
-        <i class="fa fa-phone" style="color:#fff;font-size: 20px;"></i> CALL
-      </a><br><br>
-      Alternate Phone:<br>
-      <span id="aphone"></span>&nbsp;&nbsp;
+    <td style="font-size: 14px;font-weight: bold;padding:0px;font-size: 16px;">
+      <table class="table" style="background-color: #FFCEDF">
+        <tr>
+          <td width="40%">Contact</td><td><span id="phone"></span>&nbsp;&nbsp;
+            <a class="external btn btn-primary" id="calling" style="border-radius: 20px;">
+        <i class="fa fa-phone" style="color:#fff;font-size: 20px;"></i>
+      </a></td>
+        </tr>
+        <tr>
+          <td width="40%">Alternate</td><td><span id="aphone"></span>&nbsp;&nbsp;
+            <a class="external btn btn-primary" id="calling1" style="border-radius: 20px;">
+        <i class="fa fa-phone" style="color:#fff;font-size: 20px;"></i>
+            </a></td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>
@@ -142,7 +150,8 @@ body {
 
 <table class="table" style="margin-bottom: 0px;">
   <tr>
-<td>
+<td style="background-color: #ffcedf">
+<b>DESCRIPTION</b><br><br>
 <span id="desc"></span>
 </td>
   </tr>
@@ -155,16 +164,16 @@ body {
 <table class="table" style="margin-bottom: 0px;">
   <tr>
 <td style="text-align: center;">
-  <span>Working Days</span>
+  <span><b>Working Days</b></span><br><br>
 <table class="table">
   <tr>
-    <td>S<br><span id="s"></span></td>
-    <td>M<br><span id="m"></span></td>
-    <td>T<br><span id="tu"></span></td>
-    <td>W<br><span id="w"></span></td>
-    <td>T<br><span id="th"></span></td>
-    <td>F<br><span id="f"></span></td>
-    <td>S<br><span id="sa"></span></td>
+    <td style="background-color: #ffdecf">S<br><span id="s"></span></td>
+    <td style="background-color: #CEFFD4">M<br><span id="m"></span></td>
+    <td style="background-color: #BCB5F4">T<br><span id="tu"></span></td>
+    <td style="background-color: #F4CDB5">W<br><span id="w"></span></td>
+    <td style="background-color: #C2C2C2">T<br><span id="th"></span></td>
+    <td style="background-color: #C1EFEE">F<br><span id="f"></span></td>
+    <td style="background-color: #ffdecf">S<br><span id="sa"></span></td>
   </tr>
 </table>
 </td>
@@ -220,6 +229,8 @@ $.ajax({
           success:function(data){
             $("#loader").hide();
             console.log(data);
+            if(data.Phone == ''){ $("#calling").hide(); }
+            if(data.Aphone == ''){ $("#calling1").hide(); }
             $("#bname").html(data.BusinessName);
             $("#name").html(data.Owner);
             $("#phone").html(data.Phone);
@@ -236,6 +247,7 @@ $.ajax({
             $("#ttime").html(data.ToTime);
             $("#desc").html(data.Description);
             $("#calling").attr('href',"tel:"+data.Phone);
+            $("#calling1").attr('href',"tel:"+data.Aphone);
             if(data.Latitude != '' && data.Longitude != ''){
             	showMap(data.Latitude,data.Longitude);
             }
