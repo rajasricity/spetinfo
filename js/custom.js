@@ -27,8 +27,7 @@ $("#login").on('submit', function(e){
 			if(data.Status=="Success"){
 				console.log(data);
 				localStorage.setItem("Sno",data.Sno);
-				localStorage.setItem("Phone",data.Phone);
-				location.href='index.html';
+				location.href='Validate.html';
 			}else{
 				$("#emsg").show();
 				$("#emsg").html(data.Status);
