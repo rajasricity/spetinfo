@@ -5,7 +5,6 @@ $(function(){
 connect();
 if(localStorage.getItem("Phone") != null){
 	$("#lbarinner").load(server+"leftBarLog.php");
-	$("#bottom").show();
 }else{
 	$("#lbarinner").load(server+"leftBar.php");
 }
@@ -82,6 +81,55 @@ $("#validate").on('submit', function(e){
 			}else{
 				$("#emsg").show();
 				$("#emsg").html(data.Status);
+			}
+		}
+	});
+});
+
+$("#resend").on('submit', function(e){
+	e.preventDefault();
+	var fdata = $("#resend").serialize();
+	$.ajax({
+		url:server+"app_resend.php",
+		data:fdata,
+		type:"post",
+		beforeSend: function(){
+			$("#loader").show();
+		},
+		success: function(data){
+			console.log(data);
+			$("#loader").hide();
+			if(data.Status=="Success"){
+				console.log(data);
+				localStorage.setItem("Sno",data.Sno);
+				$("#rsend").hide();
+				//location.href='Validate.html';
+			}else{
+				
+			}
+		}
+	});
+});
+
+$("#resendreg").on('submit', function(e){
+	e.preventDefault();
+	var fdata = $("#resendreg").serialize();
+	$.ajax({
+		url:server+"app_resend_register.php",
+		data:fdata,
+		type:"post",
+		beforeSend: function(){
+			$("#loader").show();
+		},
+		success: function(data){
+			console.log(data);
+			$("#loader").hide();
+			if(data.Status=="Success"){
+				console.log(data);
+				localStorage.setItem("Sno",data.Sno);
+				$("#rsend").hide();
+			}else{
+				
 			}
 		}
 	});
