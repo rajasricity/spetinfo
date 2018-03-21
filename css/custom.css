@@ -27,12 +27,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd4eb', end
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    padding: 6px 12px;
+    padding: 12px 12px;
     border: 1px solid #a12727;
     border-radius: 0px;
     background: #f22e6f;
     color: #fff !important;
     text-decoration: none;
+    height: 50px;
+    font-size: 20px;
 }
 .mbutton:hover,
 .mbutton:focus {
