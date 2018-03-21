@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Spetinfo</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="js/dist/aos.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<!-- <link rel="stylesheet" type="text/css" href="datetime/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" type="text/css" href="time/bootstrap-clockpicker.min.css"> -->
+
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="time/bootstrap-clockpicker.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/github.min.css">
+
+<style type="text/css">
+body {
+  font-family: "Droid Sans";
+}
+</style>
+</head>
+
+<body>
+
+    <div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+        <div class="box-inner" id="lbarinner"></div>
+    </div>
+
+    <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;height: 50px">
+      <div class="row">
+        <div class="col-6">
+          <a href="" class="mbutton" style="width: 100%;">ADD</a>
+        </div>
+          <div class="col-6">
+              <a href="" class="mbutton" style="width: 100%">OFFERS</a>
+            </div>
+      </div>
+    </div>
+
+
+<div class="loadLoader mybg" id="con">
+	<div class="innerLoader">
+		<img src="images/nointernet.png" width="25%">
+	<br><br>
+	No Internet Connection
+	<br><br>
+	<button class="btn btn-success" onclick="window.location.reload();">RETRY</button>
+	</div>
+</div>
+
+<div class="loadLoader" id="loader">
+		<div class="innerLoader">
+			<img src="images/loader.gif" width="50%"><br><br>
+			Loading ....
+		</div>
+</div>
+
+<div class="container-fluid">
+    <div style="width:100%;position: fixed;z-index:999;top:0px;">
+
+    <div class="row" data-aos="fade">
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+   <div style="padding:5px;margin-left:10px;" onclick="showBar();">
+   	<i class="fa fa-bars fa-2x"></i>
+   </div>
+</div>
+<div class="col-8" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;text-align: center;font-size: 19px;margin-top: 5px;">
+<a href="index.html" style="color:#fff;text-decoration: none;">SPETINFO</a>
+    </div>
+</div>
+<div class="col" style="background-color: #E11C62;padding:3px;color:#fff">
+    <div style="padding:5px;margin-right:30px;">
+    	<!-- <i class="fa fa-user fa-2x"></i> -->
+    	<span onclick="window.history.back();"><i class="fa fa-chevron-left fa-2x"></i></span>
+    </div>
+</div>
+    </div>
+    </div>
+
+<div style="top:50px;position: relative;margin-bottom:50px;">
+
+<!-- Content Data -->
+
+<div style="padding:10px;text-align:center;margin-top:0px;">
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="addData" enctype="multipart/form-data">
+<input type="hidden" name="phone" id="phone"/>
+<select name="category" id="category" class="form-control" requried style="height: 40px;">
+  <option value="">Select Category</option>
+  <option value="Buy">Buy</option>
+  <option value="Rent">Rent</option>
+  <option value="Sale">Sale</option>
+</select>
+                <br>
+<textarea name="address" id="address" class="form-control" rows="3" placeholder="Address" tabindex="8"></textarea><br>
+<textarea name="description" id="description" class="form-control" rows="3" placeholder="Description" tabindex="9"></textarea><br>
+<br>
+<input type="file" id="files" name="files" class="form-control" required="required"/><br>
+
+<button type="submit" class="mbutton pull-right" tabindex="13">SUBMIT</button>
+                </form>
+        </div>
+    </div>
+    <div class="alert alert-success" style="margin-top:20px;display:none" id="smsg"></div>
+</div>
+<!-- Content Data Close -->  
+</div>
+	
+
+</div>
+
+
+<!-- page content goes here -->
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<!-- <script src="bootstrap/js/bootstrap.js"></script> -->
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="time/bootstrap-clockpicker.min.js"></script>
+<!-- <script type="text/javascript" src="time/bootstrap-clockpicker.min.js"></script> -->
+<script src="datetime/js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/dist/aos.js"></script>
+<script src="js/custom.js"></script>
+
+<script>
+  $('.clockpicker').clockpicker({
+    placement: 'top',
+    align: 'left',
+    donetext: 'Done'
+});
+    $(function(){
+AOS.init();
+$("#demo").load(server+"app_GetImages.php?infoid="+localStorage.getItem("Infoid"));
+//Get Categories
+//console.log(localStorage.getItem("Infoid"));
+//alert(localStorage.getItem("Infoid"));
+$("#phone").val(localStorage.getItem("Phone"));
+
+//Get Info Close
+
+// Update Data
+$("#addData").on('submit', function(e){
+          e.preventDefault();
+          var fdata = new FormData(this);
+          $.ajax({
+             url:server+"app_addData.php",
+             data:fdata,
+             type:"post",
+             processData:false,
+             contentType:false,
+             cache:false,
+             beforeSend:function(){
+             $("#preloader").show();
+             $("#smsg").hide();
+                },
+             success: function(str){
+               $("#preloader").hide();
+               if(str.Status == 'Success'){
+                $("#smsg").show();
+                $("#smsg").html("Successfully Added.");
+                setTimeout(function(){ location.href="dashboard.html"; },3000);
+               }else{
+
+               }
+             },
+              error: function(jqXHR, status, error){
+               $("#preloader").hide();
+               $("#cmsg").show();
+                }
+          });
+       });
+
+// Update Data Close
+    });
+
+ if(window.File && window.FileList && window.FileReader) {
+ $("#files").on("change",function(e) {
+ var files = e.target.files ,
+ filesLength = files.length ;
+ for (var i = 0; i < filesLength ; i++) {
+ var f = files[i]
+ var fileReader = new FileReader();
+ fileReader.onload = (function(e) {
+ var file = e.target;
+ $("<img></img>",{
+ class : 'imageThumb',
+ src : e.target.result,
+ title : file.name
+ }).insertAfter("#files");
+ });
+ fileReader.readAsDataURL(f);
+ }
+});
+ } else { alert("Your browser doesn't support to File API") }
+
+</script>
+</body>
+</html>

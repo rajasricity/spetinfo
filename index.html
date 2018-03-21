@@ -21,8 +21,8 @@ body {
 
 <body>
 
-<div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
-                <div class="box-inner" id="lbarinner">
+<div style="position:fixed;width:60%;z-index:999;background-color: #141414;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+                <div class="box-inner" id="lbarinner" style="padding:0px;">
                         
                 </div>
 </div>
@@ -78,17 +78,17 @@ body {
   <ul class="myUl" id="mysearch"></ul>
 </div>
 
-<div class="row" data-aos="fade-up">
+<div class="row" data-aos="fade-up" style="position: fixed;width: 100%;z-index: 999">
 	<div class="col">
 
 <div class="search">
   <span class="fa fa-search"></span>
-  <input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px" onkeyup="searchString(this.value);">
+  <input type="text" name="search" class="form-control" placeholder="Search" style="height: 50px;" onkeyup="searchString(this.value);">
 </div>
 
 	</div>
 </div>
-
+<br><br>
 <div id="my-example"></div>
 
 </div>

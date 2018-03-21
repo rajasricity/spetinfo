@@ -171,7 +171,7 @@ body {
     </span>
 </div>
                         </td>
-                        <td>FROM TIME</td>
+                        <td align="left">FROM TIME</td>
                     </tr>
                     <tr>
                         <td width="70%">
@@ -182,7 +182,7 @@ body {
     </span>
 </div>
                         </td>
-                        <td>TO TIME</td>
+                        <td align="left">TO TIME</td>
                     </tr>
                 </table>
                 <textarea name="description" rows="4" class="form-control" id="description" placeholder="Add Description" tabindex="12"></textarea>
@@ -192,6 +192,7 @@ body {
                 </form>
         </div>
     </div>
+    <div class="alert alert-success" style="margin-top:20px;display:none" id="smsg"></div>
 </div>
 <!-- Content Data Close -->  
 </div>
@@ -310,18 +311,18 @@ $("#updateData").on('submit', function(e){
              type:"post",
              beforeSend:function(){
              $("#preloader").show();
-             $("#emsg").hide();
              $("#smsg").hide();
-             $("#cmsg").hide();
                 },
              success: function(str){
                $("#preloader").hide();
                $("#cmsg").hide();
                $("#emsg").hide();
                if(str.Status == 'Success'){
-                $("#smsg").hide();
-                alert("Successfully Submitted");
-                location.href="dashboard.html";
+                $("#smsg").show();
+                $("#smsg").html("Successfully updated.");
+                alert("Successfully updated");
+                setTimeout(function(){ location.href="dashboard.html"; },3000);
+                
                }else{
                  $("#emsg").show();
                }

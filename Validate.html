@@ -82,7 +82,15 @@ body {
 	</div>
 </div>
 
-
+<br>
+<form id="resend">
+  <input type="hidden" name="sno" id="sno1"/>
+  <input type="submit" name="submit" class="" value="Resend" style="width:100%;" id="rsend"/>
+</form>
+<br>
+<center>
+  <a href="https://msg91.com/startups/?utm_source=startup-banner"><img src="https://msg91.com/images/startups/msg91Badge.png" width="120" height="90" title="MSG91 - SMS for Startups" alt="Bulk SMS - MSG91"></a>
+</center>
 
 </div>
 
@@ -100,6 +108,7 @@ body {
     $(function(){
 AOS.init();
 $("#sno").val(localStorage.getItem("Sno"));
+$("#sno1").val(localStorage.getItem("Sno"));
     });
 </script>
 </body>

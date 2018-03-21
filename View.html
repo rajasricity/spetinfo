@@ -32,10 +32,10 @@ body {
           <a href="" class="mbutton" style="width: 100%">ADD</a>
         </div> -->
           <div class="col-6">
-            <a href="EditData.html" class="mbutton" style="width: 100%;padding-top:15px;padding-bottom:15px;">EDIT</a>
+            <a href="EditData.html" class="mbutton" style="width: 100%;">EDIT</a>
           </div>
           <div class="col-6">
-              <a href="#" class="mbutton" style="width: 100%;padding-top:15px;padding-bottom:15px;">ADD OFFERS</a>
+              <a href="Offers.html" class="mbutton" style="width: 100%;">ADD OFFERS</a>
           </div>
       </div>
     </div>
@@ -195,8 +195,14 @@ body {
 
   </div>
 </div>
-
-  
+<table class="table table-bordered">
+  <tr>
+    <td style="text-align: center;background-color: #E11C62;color:#fff;font-size: 20px;">OFFERS</td>
+  </tr>
+  <tr>
+    <td style="text-align: justify;"><span id="offers"></span></td>
+  </tr>
+</table>  
 </div>
 	
 
@@ -252,6 +258,38 @@ $.ajax({
             	showMap(data.Latitude,data.Longitude);
             }
         	}
+          });
+
+
+$.ajax({
+          url:server+"app_GetOffer.php",
+          data:{"infoid":localStorage.getItem("Infoid")},
+          type:"post",
+          beforeSend: function(){
+           $("#loader").show();
+          },
+          success:function(data){
+            $("#loader").hide();
+            console.log(data);
+            if(data.Status == 'Success'){
+              $("#offers").html(data.Offer);
+            }else{
+              $("#offers").html('No Offers');
+            }
+          }
+          });
+$.ajax({
+          url:server+"app_GetVerify.php",
+          data:{"infoid":localStorage.getItem("Infoid"),"phone":localStorage.getItem("Phone")},
+          type:"post",
+          success:function(data){
+            console.log(data);
+            if(data.Status == 'Success'){
+              $("#bottom").show();
+            }else{
+              
+            }
+          }
           });
 
 //Get Categories Close
