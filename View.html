@@ -22,11 +22,11 @@ body {
 
 <body>
 
-    <div style="position:fixed;width:60%;z-index:999;background-color: #141414;padding:10px;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
-        <div class="box-inner" id="lbarinner"></div>
+    <div style="position:fixed;width:60%;z-index:999;background-color: #141414;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
+        <div class="box-inner" id="lbarinner" style="padding:0px;"></div>
     </div>
 
-    <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;display: none;" id="bottom">
+  <div style="position:fixed;width:100%;z-index:999;z-index:9999;bottom:0px;display: none;" id="bottom">
       <div class="row">
         <!-- <div class="col-4">
           <a href="" class="mbutton" style="width: 100%">ADD</a>
@@ -278,6 +278,7 @@ $.ajax({
             }
           }
           });
+
 $.ajax({
           url:server+"app_GetVerify.php",
           data:{"infoid":localStorage.getItem("Infoid"),"phone":localStorage.getItem("Phone")},
