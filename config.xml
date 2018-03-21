@@ -19,6 +19,7 @@
     <icon src="resources/xhdpi.png" density="xhdpi" />
     </platform>
 <preference name="SplashScreenDelay" value="4000" />
+<preference name="Orientation" value="portrait" />
     <platform name="android">
     <splash platform="android" qualifier="port-ldpi" src="resources/ldpisp.png" />
 <splash platform="android" qualifier="port-mdpi" src="resources/mdpisp.png" />
@@ -29,6 +30,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="4.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.2" />
     <plugin name="cordova-plugin-geolocation" spec="2.4.2" />
+    <plugin name="cordova-plugin-file" spec="6.0.0" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
