@@ -12,15 +12,49 @@
 <link rel="stylesheet" type="text/css" href="js/dist/aos.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style type="text/css">
 body {
   font-family: "Droid Sans";
+}
+ul{
+  display: block;
+  list-style: none;
+  color: #fff;
+  font-size: 18px;
+  text-align: right;
+}
+ul li{
+  display: inline;
+  padding: 10px;
+  margin-bottom: 5px;
+  float: right;
+  clear: right;
+  border-radius: 5px;
+}
+
+ul li a{
+display: inline-block;
+width: auto;
 }
 </style>
 </head>
 
 <body>
 
+<div style="position: fixed;bottom: 90px;right: 20px;z-index: 999;display: none" id="hnbar">
+  <ul>
+  <li style="background-color: #EA0437;"><a onclick="showSubCategory('Buy');">Buy</a></li>
+  <li style="background-color: #D6A100"><a onclick="showSubCategory('Rent/Tolet');">Rent/To-Let</a></li>
+  <li style="background-color: #00A72B"><a onclick="showSubCategory('Sell');">Sell</a></li>
+  <li style="background-color: #E11C62"><a onclick="showScreen();">Post Your Add</a></li>
+  </ul>
+</div>
+
+<div style="position: fixed;bottom: 20px;right: 20px;z-index: 999">
+  <button style="background-color: #E11C62;padding: 10px;border-radius: 33px;width: 66px;height: 66px;border:none;color: #fff;outline: none;" onclick="showHnbar();">
+    <i class="fa fa-star fa-2x"></i></button>
+</div>
 <div style="position:fixed;width:60%;z-index:999;background-color: #141414;color:#fff;height:100%;z-index:9999;top:50px;display:none" id="lbar">
                 <div class="box-inner" id="lbarinner" style="padding:0px;">
                         
