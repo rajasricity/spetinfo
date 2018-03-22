@@ -213,3 +213,14 @@ function searchString(str){
 function showBar(){
 	$("#lbar").toggle("slide", {direction: "left" }, 500);
   }
+
+function showScreen(){
+if(localStorage.getItem("Phone") != null){
+location.href = "addInformation.html";
+}else{
+  location.href = "register.html";
+}
+}
+function showHnbar(){
+	$("#hnbar").slideToggle();
+}
