@@ -18,9 +18,21 @@
     <icon src="resources/hdpi.png" density="hdpi" />
     <icon src="resources/xhdpi.png" density="xhdpi" />
     </platform>
+    <platform name="ios">
+    <icon src="resources/ldpi.png" density="ldpi" />
+    <icon src="resources/mdpi" density="mdpi" />
+    <icon src="resources/hdpi.png" density="hdpi" />
+    <icon src="resources/xhdpi.png" density="xhdpi" />
+    </platform>
 <preference name="SplashScreenDelay" value="4000" />
 <preference name="Orientation" value="portrait" />
     <platform name="android">
+    <splash platform="android" qualifier="port-ldpi" src="resources/ldpisp.png" />
+<splash platform="android" qualifier="port-mdpi" src="resources/mdpisp.png" />
+<splash platform="android" qualifier="port-hdpi" src="resources/hdpisp.png" />
+<splash platform="android" qualifier="port-xhdpi" src="resources/xhdpisp.png" />
+</platform>
+    <platform name="ios">
     <splash platform="android" qualifier="port-ldpi" src="resources/ldpisp.png" />
 <splash platform="android" qualifier="port-mdpi" src="resources/mdpisp.png" />
 <splash platform="android" qualifier="port-hdpi" src="resources/hdpisp.png" />
