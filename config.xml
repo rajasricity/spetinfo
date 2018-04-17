@@ -23,6 +23,9 @@
     <icon src="resources/mdpi" density="mdpi" />
     <icon src="resources/hdpi.png" density="hdpi" />
     <icon src="resources/xhdpi.png" density="xhdpi" />
+        <icon src="resources/hdpi1.png" density="hdpi" />
+        <icon src="resources/hdpi2.png" density="hdpi" />
+        <icon src="resources/hdpi3.png" density="hdpi" />
     </platform>
 <preference name="SplashScreenDelay" value="4000" />
 <preference name="Orientation" value="portrait" />
